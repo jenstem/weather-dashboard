@@ -68,6 +68,16 @@ searchBtn.addEventListener("click", function () {
     localStorage.setItem("savedCities", JSON.stringify(savedCities));
   }
 
+  function saveTheBtns() {
+    var savedCities = localStorage.getItem("savedCities");
+    if (savedCities) {
+      savedCities = JSON.parse(savedCities);
+      savedCities.innerHTML = "";
+      for (let i = 0; i < savedCities.length; i++) {
+          saveTheCityBtn(savedCities[i]);
+      }
+    }
+  }
 
 function whatsTheWeather(city) {
     var apiKey = "26d18b24e744af5b39443da096b25939";
