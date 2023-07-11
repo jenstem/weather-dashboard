@@ -36,7 +36,7 @@ THEN I am again presented with current and future conditions for that city\
 *This is a screenshot of the five day forecast*
 ##
 
-![](https://github.com/jenstem/work-day-scheduler/blob/main/Assets/savebutton.png)
+![](https://github.com/jenstem/weather-dashboard/blob/main/assets/search.png)
 *This is a screenshot of the search button*
 ##
 
