@@ -11,6 +11,8 @@ var forecastEl = document.querySelector("#forecasting");
 var searchedCityEL = document.querySelector("#location-search");
 var searchEl = document.querySelector("#search");
 
+saveTheBtns();
+
 searchedCityEL.style.display = 'none';
 
 function setTime() {
