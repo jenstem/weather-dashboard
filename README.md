@@ -29,7 +29,7 @@ THEN I am again presented with current and future conditions for that city\
 ## Screenshots:
 
 ![](https://github.com/jenstem/work-day-scheduler/blob/main/Assets/scheduler.png)
-*This is a screenshot of the Work Day Scheduler*
+*This is a screenshot of the Weather Dashboard*
 ##
 
 ![](https://github.com/jenstem/work-day-scheduler/blob/main/Assets/meeting.png)
