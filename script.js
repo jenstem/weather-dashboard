@@ -74,6 +74,7 @@ function saveCity(citySearch) {
     localStorage.setItem("savedCities", JSON.stringify(savedCities));
 }
 
+// Save the searched cities
 function saveTheBtns() {
     var savedCities = localStorage.getItem("savedCities");
     if (savedCities) {
