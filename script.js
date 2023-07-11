@@ -98,6 +98,7 @@ function whatsTheWeather(city) {
             getWeather(response);
         });
 
+// Get weather of city
     function getWeather(response) {
         var cityName = response.city.name;
         var getTemp = response.list[0].main.temp;
