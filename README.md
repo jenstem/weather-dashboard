@@ -33,7 +33,7 @@ THEN I am again presented with current and future conditions for that city\
 ##
 
 ![](https://github.com/jenstem/work-day-scheduler/blob/main/Assets/meeting.png)
-*This is a screenshot of an event typed in*
+*This is a screenshot of the five day forecast*
 ##
 
 ![](https://github.com/jenstem/work-day-scheduler/blob/main/Assets/savebutton.png)
