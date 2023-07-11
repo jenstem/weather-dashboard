@@ -32,7 +32,7 @@ THEN I am again presented with current and future conditions for that city\
 *This is a screenshot of the Weather Dashboard*
 ##
 
-![](https://github.com/jenstem/work-day-scheduler/blob/main/Assets/meeting.png)
+![](https://github.com/jenstem/weather-dashboard/blob/main/assets/fiveday.png)
 *This is a screenshot of the five day forecast*
 ##
 
