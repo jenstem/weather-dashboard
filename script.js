@@ -30,6 +30,7 @@ function setTime() {
 }
 setTime();
 
+// Search button event list and function
 searchBtn.addEventListener("click", function () {
     var locateCity = searchText.value.trim();
     if (locateCity == '') return;
