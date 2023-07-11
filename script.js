@@ -11,6 +11,8 @@ var forecastEl = document.querySelector("#forecasting");
 var searchedCityEL = document.querySelector("#location-search");
 var searchEl = document.querySelector("#search");
 
+searchedCityEL.style.display = 'none';
+
 function setTime() {
     let today = dayjs().format('MMM DD, YYYY [at] hh:mm:ss a');
     $("#currentTime").text(today);
@@ -45,6 +47,25 @@ searchBtn.addEventListener("click", function () {
       var citySearch = event.target.textContent;
       saveCityList(citySearch);
     });
+  }
+
+  function saveCityList(citySearch) {
+    whatsTheWeather(citySearch)
+    searchEl.classList.remove('col-12')
+    searchEl.classList.add('col-4')
+    searchedCityEL.style.display = '';
+  }
+
+
+  function saveCity(citySearch) {
+    var savedCities = localStorage.getItem("savedCities");
+    if (savedCities) {
+      savedCities = JSON.parse(savedCities);
+    } else {
+      savedCities = [];
+    }
+    savedCities.push(citySearch);
+    localStorage.setItem("savedCities", JSON.stringify(savedCities));
   }
 
 
