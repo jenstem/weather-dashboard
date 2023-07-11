@@ -22,3 +22,14 @@ function setTime(){
     setInterval(updateTime, 1000);
   }
   setTime();
+
+  function whatsTheWeather(city) {
+    var apiKey = "26d18b24e744af5b39443da096b25939";
+    var apiUrl = "https://api.openweathermap.org/data/2.5/forecast?units=imperial&q=" + city + "&appid=" + apiKey;
+    fetch(apiUrl)
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (response) {
+        getWeather(response);
+      });
