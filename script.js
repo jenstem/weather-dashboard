@@ -10,3 +10,15 @@ var getForecast = document.querySelector("#get-forecast");
 var forecastEl = document.querySelector("#forecasting");
 var searchedCityEL = document.querySelector("#location-search");
 var searchEl = document.querySelector("#search");
+
+function setTime(){
+    let today = dayjs().format('MMM DD, YYYY [at] hh:mm:ss a');
+    $("#currentTime").text(today);
+
+    function updateTime(){
+      today = dayjs().format('MMM DD, YYYY [at] hh:mm:ss a');
+      $("#currentTime").text(today);
+    }
+    setInterval(updateTime, 1000);
+  }
+  setTime();
