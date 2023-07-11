@@ -1,6 +1,6 @@
 ## Weather Dashbord
 
-Click [here](https://jenstem.github.io/work-day-scheduler/) to see the website.
+Click [here](https://jenstem.github.io/weather-dashboard/) to see the website.
 
 ## Description
 
