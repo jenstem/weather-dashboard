@@ -4,9 +4,9 @@ Click [here](https://jenstem.github.io/work-day-scheduler/) to see the website.
 
 ## Description
 
-As a current student, I wanted to create a work day scheduler that would display the current date.  The scheduler would allow the user to see what was coming up on their current schedule by showing each time block in a different color for past, present and future.
+As a current student, I wanted to create a weather dashboard that would display the current weather of a city of my choosing.  The weather dashboard would allow the user to see what the five day forecast would be along with a small icon or image that depicts the weather.  Also shown are the tempature, wind speed and humidity for that area.
 
-When the user types something in to their schedule and clicks the save button to the corresponding time block, the event is saved to local storage even if the user refreshes the page.
+The user can search the weather for multiple cities.  When the user types a city into the search area and clicks the search button, the city is saved to local storage even if the user refreshes the page.  A list of searched cities is shown below the search button.  The user can click on a previous searched city and that city's weather will populate again.
 
 ## User Story
 
