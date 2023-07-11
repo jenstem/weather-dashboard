@@ -86,6 +86,7 @@ function saveTheBtns() {
     }
 }
 
+// Fetch 3rd party API
 function whatsTheWeather(city) {
     var apiKey = "26d18b24e744af5b39443da096b25939";
     var apiUrl = "https://api.openweathermap.org/data/2.5/forecast?units=imperial&q=" + city + "&appid=" + apiKey;
