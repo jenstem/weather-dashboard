@@ -23,6 +23,31 @@ function setTime() {
 }
 setTime();
 
+
+searchBtn.addEventListener("click", function () {
+    var locateCity = searchText.value.trim();
+    if (locateCity == '') return;
+    whatsTheWeather(locateCity);
+    saveTheCityBtn(locateCity);
+    saveCity(locateCity);
+    searchText.value = "";
+    searchEl.classList.remove('col-12')
+    searchEl.classList.add('col-4')
+    searchedCityEL.style.display = '';
+  });
+
+  function saveTheCityBtn(locateCity) {
+    var searchingButton = document.createElement("button");
+    searchingButton.classList.add("btn", "btn-outline-secondary", "w-100");
+    searchingButton.textContent = locateCity;
+    searchedCities.appendChild(searchingButton);
+    searchingButton.addEventListener("click", function (event) {
+      var citySearch = event.target.textContent;
+      saveCityList(citySearch);
+    });
+  }
+
+
 function whatsTheWeather(city) {
     var apiKey = "26d18b24e744af5b39443da096b25939";
     var apiUrl = "https://api.openweathermap.org/data/2.5/forecast?units=imperial&q=" + city + "&appid=" + apiKey;
