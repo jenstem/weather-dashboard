@@ -1,3 +1,4 @@
+// Variables
 var searchText = document.querySelector("#search-box");
 var searchBtn = document.querySelector("#searchButton");
 var searchedCities = document.querySelector("#searchedCities");
