@@ -17,6 +17,7 @@ saveTheBtns();
 
 searchedCityEL.style.display = 'none';
 
+// Add the current time
 function setTime() {
     let today = dayjs().format('MMM DD, YYYY [at] hh:mm:ss a');
     $("#currentTime").text(today);
