@@ -47,3 +47,5 @@ I received help from a tutor, [Scott Everett](https://calendly.com/fsf-tutor-tea
 I borrowed and changed code from user [teddysm](https://github.com/teddysm/WeatherDashboard).
 
 I also received help from BCS Learning Assistants and I phoned a friend.
+
+I also received help from Michael Iapan during office hours.
