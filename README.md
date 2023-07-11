@@ -37,7 +37,7 @@ THEN I am again presented with current and future conditions for that city\
 ##
 
 ![](https://github.com/jenstem/work-day-scheduler/blob/main/Assets/savebutton.png)
-*This is a screenshot of the save button*
+*This is a screenshot of the search button*
 ##
 
 ## Notes:
