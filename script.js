@@ -62,7 +62,7 @@ function saveCityList(citySearch) {
     searchedCityEL.style.display = '';
 }
 
-
+// Save in localStorage
 function saveCity(citySearch) {
     var savedCities = localStorage.getItem("savedCities");
     if (savedCities) {
