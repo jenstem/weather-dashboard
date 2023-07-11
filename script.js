@@ -99,4 +99,27 @@ function whatsTheWeather(city) {
         tempEL.textContent = getTemp + "°F";
         windEl.textContent = getWind + " mph";
         humidEl.textContent = getHumid + "%";
+
+    // initialize with empty string
+    var weatherCard = "";
+    //iterate through index, starting at 7, ending at 40, with increase of 8 each time
+    for (var i = 7; i <= 40; i += 8) {
+      // create new date object by multiplying the value by 1000 to convert it to milliseconds
+      // toLocaleDateString() method has a parameter of en-US to format the date as a string
+      // this value is stored in getDate variable
+      var getDate = new Date(response.list[i].dt * 1000).toLocaleDateString("en-US");
+      // concat a string of HTML elements to the weatherCard variable
+      // use template literals to create dynamic values within the string
+      // add a new multiple weather forecast, create multiple cards or days
+      // icons added in line 144
+      weatherCard += `<div class="col-3 col-lg-2 col-md-4 col-sm-3">
+            <h5>${getDate}</h5>
+            <img src="http://openweathermap.org/img/w/${response.list[i].weather[0].icon}.png"/>
+            <p>Temp: ${(response.list[i].main.temp)}°F</p>
+            <p>Wind: ${(response.list[i].wind.speed)} mph</p>
+            <p>Humidity: ${(response.list[i].main.humidity)}%</p>
+          </div>`;
     }
+    forecastEl.innerHTML = weatherCard;
+  }
+}
