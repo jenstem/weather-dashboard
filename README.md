@@ -28,7 +28,7 @@ THEN I am again presented with current and future conditions for that city\
 
 ## Screenshots:
 
-![](https://github.com/jenstem/work-day-scheduler/blob/main/Assets/scheduler.png)
+![](https://github.com/jenstem/weather-dashboard/blob/main/assets/weather.png)
 *This is a screenshot of the Weather Dashboard*
 ##
 
