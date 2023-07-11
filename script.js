@@ -43,6 +43,7 @@ searchBtn.addEventListener("click", function () {
     searchedCityEL.style.display = '';
 });
 
+// Dynamic searched cities
 function saveTheCityBtn(locateCity) {
     var searchingButton = document.createElement("button");
     searchingButton.classList.add("btn", "btn-outline-secondary", "w-100");
