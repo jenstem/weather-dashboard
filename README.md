@@ -42,8 +42,8 @@ THEN I am again presented with current and future conditions for that city\
 
 ## Notes:
 
-I received help from a tutor, [David Elutilo](https://calendly.com/fsf-tutor-team/david-elutilo?month=2023-06).
+I received help from a tutor, [Scott Everett](https://calendly.com/fsf-tutor-team/scott-everett?month=2023-06).
 
 I borrowed and changed code from the [mini-project](https://git.bootcampcontent.com/University-of-Connecticut/CONN-VIRT-FSF-PT-05-2023-U-LOLC/-/tree/main/05-Third-Party-APIs/01-Activities/28-Stu_Mini-Project).
 
-I also received help from BCS Learning Assistant.
+I also received help from BCS Learning Assistants and I phoned a friend.
