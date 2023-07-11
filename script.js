@@ -12,6 +12,7 @@ var forecastEl = document.querySelector("#forecasting");
 var searchedCityEL = document.querySelector("#location-search");
 var searchEl = document.querySelector("#search");
 
+// Call saveTheBtns function
 saveTheBtns();
 
 searchedCityEL.style.display = 'none';
