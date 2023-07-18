@@ -1,134 +1,171 @@
-// Variables
+// variables
+var googleMapsApiKey = "";
+var openWeatherApiKey = "http://api.openweathermap.org/data/2.5/air_pollution?lat={lat}&lon={lon}&appid={8686e0fe4732b6b364f3c95d6dfcf09c}";
+
+// Backup for Google Maps - API Key from Bing Maps then Mapquest/Radar
+// var mapquestApiKey = "prj_test_pk_ef08dfd3ed0a8748c5d83db178b8283bcdf5c539";
+var bingMapsApiKey = "AjuFMgDNUeVWcHGU633JdkzIGhbOjzM6-ruaD9QyJr4RPe4AHW-qEug1BK1URiom";
+
+// Backup for Open Weather - API Key from RapidAPI
+var rapidApiKey = "b9b932d13amshd7a22bc43c9b9cep19e1b4jsn54e36226b53c";
+
+// variable search area and button
 var searchText = document.querySelector("#search-box");
 var searchBtn = document.querySelector("#searchButton");
 var searchedCities = document.querySelector("#searchedCities");
-var city = document.querySelector("#search-city");
-var iconEL = document.querySelector("#icon");
-var tempEL = document.querySelector("#tempEl");
-var windEl = document.querySelector("#wind");
-var humidEl = document.querySelector("#humidity");
-var getForecast = document.querySelector("#get-forecast");
-var forecastEl = document.querySelector("#forecasting");
 var searchedCityEL = document.querySelector("#location-search");
-var searchEl = document.querySelector("#search");
 
-// Call saveTheBtns function
-saveTheBtns();
+var cityName = document.querySelector("#city-name");
+var airEl = document.querySelector("#air");
+
+// variable to hold map container
+var mapContainer = document.querySelector(".map-container");
+var mapOne = document.querySelector("#map-one");
+var mapEl = document.querySelector("#mapone");
 
 searchedCityEL.style.display = 'none';
 
-// Add the current time
-function setTime() {
-    let today = dayjs().format('MMM DD, YYYY [at] hh:mm:ss a');
-    $("#currentTime").text(today);
+// variables to handle maps
+// var googleMaps = ;
+// var openWeather = ;
 
-    function updateTime() {
-        today = dayjs().format('MMM DD, YYYY [at] hh:mm:ss a');
-        $("#currentTime").text(today);
-    }
-    setInterval(updateTime, 1000);
-}
-setTime();
+// get lat and long
 
-// Search button event list and function
+// search button event listener
+
 searchBtn.addEventListener("click", function () {
-    var locateCity = searchText.value.trim();
-    if (locateCity == '') return;
-    whatsTheWeather(locateCity);
-    saveTheCityBtn(locateCity);
-    saveCity(locateCity);
-    searchText.value = "";
-    searchEl.classList.remove('col-12')
-    searchEl.classList.add('col-4')
-    searchedCityEL.style.display = '';
+    console.log(searchText.value);
+    citySearch(searchText.value);
 });
 
-// Dynamic searched cities
 function saveTheCityBtn(locateCity) {
-    var searchingButton = document.createElement("button");
-    searchingButton.classList.add("btn", "btn-outline-secondary", "w-100");
-    searchingButton.textContent = locateCity;
-    searchedCities.appendChild(searchingButton);
-    searchingButton.addEventListener("click", function (event) {
-        var citySearch = event.target.textContent;
-        saveCityList(citySearch);
-    });
+  var searchingButton = document.createElement("button");
+  searchingButton.classList.add("btn", "btn-outline-secondary", "w-100");
+  searchingButton.textContent = locateCity;
+  searchedCities.appendChild(searchingButton);
+  searchingButton.addEventListener("click", function (event) {
+      var citySearched = event.target.textContent;
+      saveCityList(citySearched);
+  });
 }
 
-function saveCityList(citySearch) {
-    whatsTheWeather(citySearch)
-    searchEl.classList.remove('col-12')
-    searchEl.classList.add('col-4')
-    searchedCityEL.style.display = '';
+function saveCityList(citySearched) {
+  citySearch(citySearched)
+  searchText.classList.remove('col-12')
+  searchText.classList.add('col-4')
+  searchedCityEL.style.display = '';
 }
 
 // Save in localStorage
-function saveCity(citySearch) {
-    var savedCities = localStorage.getItem("savedCities");
-    if (savedCities) {
-        savedCities = JSON.parse(savedCities);
-    } else {
-        savedCities = [];
-    }
-    savedCities.push(citySearch);
-    localStorage.setItem("savedCities", JSON.stringify(savedCities));
+function saveCity(citySearched) {
+  var savedCities = localStorage.getItem("savedCities");
+  if (savedCities) {
+      savedCities = JSON.parse(savedCities);
+  } else {
+      savedCities = [];
+  }
+  savedCities.push(citySearched);
+  localStorage.setItem("savedCities", JSON.stringify(savedCities));
 }
 
 // Save the searched cities
 function saveTheBtns() {
-    var savedCities = localStorage.getItem("savedCities");
-    if (savedCities) {
-        savedCities = JSON.parse(savedCities);
-        savedCities.innerHTML = "";
-        for (let i = 0; i < savedCities.length; i++) {
-            saveTheCityBtn(savedCities[i]);
-        }
-    }
+  var savedCities = localStorage.getItem("savedCities");
+  if (savedCities) {
+      savedCities = JSON.parse(savedCities);
+      savedCities.innerHTML = "";
+      for (let i = 0; i < savedCities.length; i++) {
+          saveTheCityBtn(savedCities[i]);
+      }
+  }
 }
 
-// Fetch 3rd party API
-function whatsTheWeather(city) {
-    var apiKey = "26d18b24e744af5b39443da096b25939";
-    var apiUrl = "https://api.openweathermap.org/data/2.5/forecast?units=imperial&q=" + city + "&appid=" + apiKey;
-    fetch(apiUrl)
-        .then(function (response) {
-            return response.json();
-        })
-        .then(function (response) {
-            getWeather(response);
-        });
+//googlemap
+function myMap(lat,lon) {
+  var mapProp = {
+      center: new google.maps.LatLng(lat, lon),
+      zoom: 8,
+  };
+  var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+}
 
-// Get weather of city
-    function getWeather(response) {
-        var cityName = response.city.name;
-        var getTemp = response.list[0].main.temp;
-        var getWind = response.list[0].wind.speed;
-        var getHumid = response.list[0].main.humidity;
-        city.textContent = cityName;
-        tempEL.textContent = getTemp + "°F";
-        windEl.textContent = getWind + " mph";
-        humidEl.textContent = getHumid + "%";
 
-        // initialize with empty string
-        var weatherCard = "";
-        //iterate through index, starting at 7, ending at 40, with increase of 8 each time
-        for (var i = 7; i <= 40; i += 8) {
-            // create new date object by multiplying the value by 1000 to convert it to milliseconds
-            // toLocaleDateString() method has a parameter of en-US to format the date as a string
-            // this value is stored in getDate variable
-            var getDate = new Date(response.list[i].dt * 1000).toLocaleDateString("en-US");
-            // concat a string of HTML elements to the weatherCard variable
-            // use template literals to create dynamic values within the string
-            // add a new multiple weather forecast, create multiple cards or days
-            // icons line 144
-            weatherCard += `<div class="col-3 col-lg-2 col-md-4 col-sm-3">
-            <h5>${getDate}</h5>
-            <img src="http://openweathermap.org/img/w/${response.list[i].weather[0].icon}.png"/>
-            <p>Temp: ${(response.list[i].main.temp)}°F</p>
-            <p>Wind: ${(response.list[i].wind.speed)} mph</p>
-            <p>Humidity: ${(response.list[i].main.humidity)}%</p>
-          </div>`;
+// function for search
+function citySearch(cityName) {
+    var airQuality;
+    // if (searchResults === "Good" || searchResults === "Fair" || searchResults === "Moderate" || searchResults === "Poor" || searchResults === "Very Poor") {
+    //     airQuality = searchResults;
+    //     return;
+    // }
+
+    var apiKeyAir = "8686e0fe4732b6b364f3c95d6dfcf09c";
+    var apiUrlGeo = "http://api.openweathermap.org/geo/1.0/direct?q=" + cityName + "&appid=" + apiKeyAir;
+    // console.log("inside citySearch", searchResults);
+
+    // only need function inside fetch if you need to create a function
+    fetch(apiUrlGeo)
+    .then(function (response) {
+        return response.json();
+    })
+    .then(function (response) {
+        console.log(response);
+        var {lat, lon, name} = response[0];
+        getQuality(lat, lon, name);
+        myMap(lat, lon);
+    });
+}
+
+// Fetch the air quality
+function getQuality(lat, lon, name) {
+    var apiKeyAir = "8686e0fe4732b6b364f3c95d6dfcf09c";
+    var apiUrlAir = `http://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${apiKeyAir}`;
+    fetch(apiUrlAir)
+    .then(function (response) {
+        return response.json();
+    })
+    .then(function (response) {
+        var {aqi} = response.list[0].main;
+        renderAirQuality(aqi, name);
+    });
+        };
+
+
+
+function getAirQuality(response) {
+//     // figure out variables and array for this
+//     // use this as guide
+//     // var cityName = response.city.name;
+//     // var getTemp = response.list[0].main.temp;
+//     // var getWind = response.list[0].wind.speed;
+//     // var getHumid = response.list[0].main.humidity;
+//     // city.textContent = cityName;
+//     // tempEL.textContent = getTemp + "°F";
+//     // windEl.textContent = getWind + " mph";
+//     // humidEl.textContent = getHumid + "%";
         }
-        forecastEl.innerHTML = weatherCard;
+
+// display an icon to represent good, fair, moderate, poor, very poor and we create our own scale
+
+function renderAirQuality(aqi, cityName) {
+    var nameOfCity = document.createElement("h2");
+    var airQualityEl = document.createElement("h3");
+    nameOfCity.textContent = cityName;
+    var airQuality;
+    if (aqi == 1) {
+      airQuality = "Air quality is good" + " 🔵";
     }
+    if (aqi == 2) {
+      airQuality = "Air quality is fair" + " 🟢";
+    }
+    if (aqi == 3) {
+      airQuality = "Air quality is moderate" + " 🟡";
+    }
+    if (aqi == 4) {
+      airQuality = "Air quality is poor" + " 🟠";
+    }
+    if (aqi == 5) {
+      airQuality = "Air quality is very poor" + " 🔴";
+    }
+    airQualityEl.textContent = airQuality;
+    airEl.append(nameOfCity, airQualityEl);
 }
